@@ -2,32 +2,116 @@
   "info": {
     "_postman_id": "4bbaf2c2-c691-417b-a0a8-74d9a497b285",
     "name": "Reqres Tests",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "53418841",
-    "_collection_link": "https://go.postman.co/collection/53418841-4bbaf2c2-c691-417b-a0a8-74d9a497b285?source=collection_link"
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
     {
-      "name": "Get all Users",
+      "name": "Get All Users",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ]
+          }
+        }
+      ],
       "request": {
         "method": "GET",
-        "header": []
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "pub_a0debf60289c13a3223396a261ab0e046b1793235121dcaa5bba4b7dca9ed3ac"
+          }
+        ],
+        "url": {
+          "raw": "https://reqres.in/api/users?page=2",
+          "protocol": "https",
+          "host": ["reqres", "in"],
+          "path": ["api", "users"],
+          "query": [
+            {
+              "key": "page",
+              "value": "2"
+            }
+          ]
+        }
       },
       "response": []
     },
     {
-      "name": "Get all User",
+      "name": "Get Single User",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ]
+          }
+        }
+      ],
       "request": {
         "method": "GET",
-        "header": []
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "pub_a0debf60289c13a3223396a261ab0e046b1793235121dcaa5bba4b7dca9ed3ac"
+          }
+        ],
+        "url": {
+          "raw": "https://reqres.in/api/users/2",
+          "protocol": "https",
+          "host": ["reqres", "in"],
+          "path": ["api", "users", "2"]
+        }
       },
       "response": []
     },
     {
-      "name": "Post User",
+      "name": "Create User",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 201\", function () {",
+              "    pm.response.to.have.status(201);",
+              "});"
+            ]
+          }
+        }
+      ],
       "request": {
-        "method": "GET",
-        "header": []
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "x-api-key",
+            "value": "pub_a0debf60289c13a3223396a261ab0e046b1793235121dcaa5bba4b7dca9ed3ac"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"morpheus\",\n  \"job\": \"leader\"\n}"
+        },
+        "url": {
+          "raw": "https://reqres.in/api/users",
+          "protocol": "https",
+          "host": ["reqres", "in"],
+          "path": ["api", "users"]
+        }
       },
       "response": []
     }
